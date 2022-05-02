@@ -1,0 +1,28 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="city" placeholder="Enter the city">
+    <button type="submit">
+    </button>
+</form>
+<h3>Country Code-{{data.country_code}}</h3>
+<h3>Location-{{data.location}}</h3>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+q

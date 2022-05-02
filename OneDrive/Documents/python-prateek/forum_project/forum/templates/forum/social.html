@@ -1,0 +1,13 @@
+{% extends "dashboard/base.html" %}
+{% load socialaccount %}
+    <title>Google Registration</title>
+    {% block content %}
+    <h3>Checking if you are signed in...</h3>
+    {% if user.is_authenticated %}
+    <h1>Welcome, {{ user.username }} !</h1>
+   
+    {% else %}
+    <h1>Please sign in through google to access</h1>
+    <a href="{% provider_login_url 'google' %}">Login with Google</a>
+    {% endif %}
+    {% endblock content %}

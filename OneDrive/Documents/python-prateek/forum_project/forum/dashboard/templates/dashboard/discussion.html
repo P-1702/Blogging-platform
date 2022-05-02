@@ -1,0 +1,61 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+<style>
+  .comment{
+    display:inline;
+    
+  }
+  .submit{
+    padding-bottom: 20px;
+  }
+  .main-comment-section{
+    font-size: "medium";
+    padding-bottom: 10px;
+  }
+</style>
+<div class="submit">
+<form method="POST">
+    {% csrf_token %}
+      {{comment_form.as_p}}
+      <input type="submit" name="comment" class="btn btn-warning">
+    </div>
+</form>    
+
+
+  
+  <div class="main-comment-section" align="center">
+    <b>{{comments.count}}</b> Comment{{comments|pluralize}}
+  </div>
+  
+  {% for comment in comments %}
+  <div class="comment">
+    <blockquote class="blockquote">
+      <p>{{ comment.content}}</p>
+      <footer class="blockquote-footer">
+        
+        By <cite>{{comment.user|capfirst}}</cite> 
+          {% ifequal  object.author.id user.id%}
+          <a href="{% url 'discussion' comment.id %}" style="color: #585858;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+   
+          {% endifequal %}
+          {% ifequal comment.user.id user.id%}
+          <form action = "{% url 'delete_com' comment.id %}" method = "POST">
+            {% csrf_token %}
+            <p align="right">
+            <input class="btn btn-danger btn-sm mt-1 mb-1" type="submit" value="Delete">
+            </p>
+          </form>
+  </div>
+              {% ifequal comment.user.id object.author.id%}
+              {% else %}
+              <a href="{% url 'discussion' comment.id %}" style="color: #585858;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+              {% endifequal %}
+          {% endifequal %}
+          
+      </footer>
+    </blockquote>
+
+    
+  {% endfor %}
+  
+{% endblock content %}

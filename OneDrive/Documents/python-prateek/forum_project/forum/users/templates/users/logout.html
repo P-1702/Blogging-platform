@@ -1,0 +1,25 @@
+  
+{% extends "dashboard/base.html" %}
+{% block content %}
+<style>
+    .a-content{
+        color:#e7ca47;
+        font-size:x-large;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        display:block;
+        margin: 0 auto;
+    }
+    .a-content:hover {
+        color: #AAAAAA;
+        font-size:x-large;
+        font-style: italic;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+</style>
+    <h2>You have been logged out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class="a-content" href="{% url 'login' %}" align="center" >Log In Again</a>
+        </small>
+    </div>
+{% endblock content %}

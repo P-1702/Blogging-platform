@@ -1,0 +1,12 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+<form action="/output" method="get">
+    <h2>Write to us...</h2>
+    <input type="text" name="name" id="name" placeholder="Name*" required>
+    <input type="email" name="email" id="email" placeholder="Email*" required>
+    <textarea name="message" name="message" required id="msg" cols="30" rows="10" placeholder="Write a message*"></textarea>
+    <a href="C:\Users\Dell\OneDrive\Documents\python-prateek\forum_project\forum\dashboard\templates\output.html">
+    <input type="button" id="submitBtn" value="SUBMIT"></a>
+    </form>
+</form>
+{% endblock content %}
